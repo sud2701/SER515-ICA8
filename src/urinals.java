@@ -10,6 +10,7 @@ skundur1@asu.edu
 
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class urinals {
@@ -90,6 +91,22 @@ public class urinals {
             }
         }
         return count;
+    }
+
+    public String getKeyboardString(){
+        Scanner x=new Scanner(System.in);
+        return x.nextLine();
+    }
+
+    public ArrayList<String> getFileString() throws IOException {
+        ArrayList<String> strings=new ArrayList<>();
+        String str;
+        BufferedReader br=new BufferedReader(new FileReader("urinal.dat"));
+        str=br.readLine();
+        while(str!=null || str!="-1"){
+            strings.add(str);
+        }
+        return strings;
     }
 
 }
