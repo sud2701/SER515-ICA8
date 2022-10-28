@@ -9,7 +9,7 @@ import src.urinals;
 import static org.junit.jupiter.api.Assertions.*;
 
 class urinalsTest {
-
+    urinals u=new urinals();
     @BeforeEach
     void setUp() {
     }
@@ -24,7 +24,7 @@ class urinalsTest {
 
     @Test
     void isValid() {
-        urinals u=new urinals();
+
         Assertions.assertEquals(true,u.isValid(new String("00000")));
         assertFalse(u.isValid(new String("Hello")));
         Assertions.assertEquals(false,u.isValid(new String("123,456")));
@@ -37,6 +37,24 @@ class urinalsTest {
         Assertions.assertEquals(false,u.isValid(new String("6")));
         Assertions.assertEquals(true,u.isValid(new String("010")));
         Assertions.assertEquals(false,u.isValid(new String("0000000000000000000000000000000000000000000")));
+        Assertions.assertEquals(false,u.isValid(new String("011")));
+        Assertions.assertEquals(false,u.isValid(new String("111")));
+        Assertions.assertEquals(false,u.isValid(new String("1101")));
         System.out.println("====== Sudheer Reddy Kunduru == TEST ONE EXECUTED");
+    }
+
+    @Test
+    void countUrinals() {
+        Assertions.assertEquals(3,u.countUrinals(new String("10001")));
+        Assertions.assertEquals(2,u.countUrinals(new String("1001")));
+        Assertions.assertEquals(2,u.countUrinals(new String("0000")));
+        Assertions.assertEquals(3,u.countUrinals(new String("00000")));
+        Assertions.assertEquals(2,u.countUrinals(new String("01000")));
+        Assertions.assertEquals(-1,u.countUrinals(new String("011")));
+        Assertions.assertEquals(-1,u.countUrinals(new String("11")));
+        Assertions.assertEquals(2,u.countUrinals(new String("101")));
+        Assertions.assertEquals(1,u.countUrinals(new String("10")));
+        Assertions.assertEquals(3,u.countUrinals(new String("10001")));
+        System.out.println("====== Sudheer Reddy Kunduru == TEST TWO EXECUTED");
     }
 }
